@@ -1,4 +1,5 @@
-﻿using PaymentTestApi.ApplicationService.ProcessPayment;
+﻿using EasyRetry;
+using PaymentTestApi.ApplicationService.ProcessPayment;
 using PaymentTestApi.Models;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,8 @@ namespace PaymentTestApi.ApplicationService.PremiumPaymentService
     public class PremiumPaymentGateway : IPremiumPaymentGateway
     {
         private readonly IProcessPaymentService _processPaymentService;
-        public PremiumPaymentGateway(IProcessPaymentService processPaymentService)
+        private readonly IEasyRetry _easyRetry;
+        public PremiumPaymentGateway(IProcessPaymentService processPaymentService, IEasyRetry _easyRetry)
         {
             _processPaymentService = processPaymentService;
         }
@@ -19,8 +21,11 @@ namespace PaymentTestApi.ApplicationService.PremiumPaymentService
 
         public async Task<bool> ProcessPayment(PaymentRequest paymentRequest)
         {
+            var result = await _easyRetry.Retry(async () => await _processPaymentService.ProcessPayment(paymentRequest, GatewayName), new RetryOptions()
+            {
+                Attempts = 3,
+            });
 
-            var result = await _processPaymentService.ProcessPayment(paymentRequest, GatewayName);
             return result;
 
         }

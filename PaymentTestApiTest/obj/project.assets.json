@@ -23,6 +23,18 @@
           "lib/netstandard1.5/Castle.Core.dll": {}
         }
       },
+      "EasyRetry/2.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "3.1.7"
+        },
+        "compile": {
+          "lib/netcoreapp3.1/EasyRetry.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/EasyRetry.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.Authentication.Abstractions/2.2.0": {
         "type": "package",
         "dependencies": {
@@ -2453,6 +2465,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
+          "EasyRetry": "2.0.1",
           "Microsoft.AspNetCore.Mvc.Formatters.Json": "2.2.0",
           "Microsoft.AspNetCore.Mvc.NewtonsoftJson": "3.1.9",
           "Microsoft.EntityFrameworkCore": "5.0.0",
@@ -2497,6 +2510,18 @@
         "lib/netstandard1.5/Castle.Core.dll",
         "lib/netstandard1.5/Castle.Core.xml",
         "readme.txt"
+      ]
+    },
+    "EasyRetry/2.0.1": {
+      "sha512": "z6hJT+BRigzla/1qVyMSCAPxGCbqXdlpSEjuabkTyLu/lhnfTgfdZjNtVVkIe4GWwgsqvq87gV9gvKZA+Mf7Ug==",
+      "type": "package",
+      "path": "easyretry/2.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "easyretry.2.0.1.nupkg.sha512",
+        "easyretry.nuspec",
+        "lib/netcoreapp3.1/EasyRetry.dll"
       ]
     },
     "Microsoft.AspNetCore.Authentication.Abstractions/2.2.0": {
