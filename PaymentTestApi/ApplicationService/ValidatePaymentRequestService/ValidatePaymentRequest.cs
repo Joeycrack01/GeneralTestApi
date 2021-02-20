@@ -21,20 +21,17 @@ namespace PaymentTestApi.ApplicationService.ValidatePaymentRequest
         {
             if (paymentRequest.Amount < 0) return false;
 
-            if (paymentRequest.ExpirationDate.Date < DateTime.Now.Date) return false;
+
+            if (!ValidateDate(paymentRequest.ExpirationDate)) return false;
 
             //if security No is Not null validate that its 3 digit
             if (!string.IsNullOrEmpty(paymentRequest.SecurityCode))
             {
-                var toInt = int.TryParse(paymentRequest.SecurityCode, out int secCode);
-
-                if (!toInt) return false;
+                if (!int.TryParse(paymentRequest.SecurityCode, out int secCode)) return false;
             }
 
             // check credit card validity
-            var iSCreditCardValid = validateCreditCardNumber(paymentRequest.CreditCardNumber);
-
-            if (!iSCreditCardValid) return false;
+            if (!validateCreditCardNumber(paymentRequest.CreditCardNumber)) return false;
 
             var paymentGatewayService = new List<IPaymentProcessorProvider>();
             using (var scope = _serviceProvider.CreateScope())
@@ -50,7 +47,14 @@ namespace PaymentTestApi.ApplicationService.ValidatePaymentRequest
 
         }
 
-        public static bool validateCreditCardNumber(string creditCardNumber)
+        public bool ValidateDate (DateTime ExpirationDate)
+        {
+            if (ExpirationDate.Date < DateTime.Now.Date) return false;
+
+            return true;
+        }
+
+        public bool validateCreditCardNumber(string creditCardNumber)
         {
             //// check whether input string is null or empty
             if (string.IsNullOrEmpty(creditCardNumber))

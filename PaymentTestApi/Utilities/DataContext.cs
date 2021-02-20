@@ -19,9 +19,8 @@ namespace MediSmartTestApi.Utilities
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<UserData>().ToTable("UserData");
-            modelBuilder.Entity<Payment>().ToTable("Payment");
-            //modelBuilder.Entity<UserData>().ToTable("UserData");
+            modelBuilder.Entity<Payment>().ToTable("Payment")
+                .HasKey(e => e.Id);
         }
     }
 }
