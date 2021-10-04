@@ -30,7 +30,7 @@ namespace PaymentTestApi.Controllers
             catch (Exception ex)
             {
                 LogError(ex);
-                return StatusCode(500);
+                return BadRequest(ex.Message);
             }
         }
     }
