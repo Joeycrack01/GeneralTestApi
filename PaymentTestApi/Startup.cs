@@ -55,8 +55,8 @@ namespace MediSmartTestApi
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Version = "v1",
-                    Title = "Filed Interview Test",
-                    Description = "Filed Interview Test Api",
+                    Title = "General Test Api",
+                    Description = "Generic Test Api",
                 });
             });
         }
