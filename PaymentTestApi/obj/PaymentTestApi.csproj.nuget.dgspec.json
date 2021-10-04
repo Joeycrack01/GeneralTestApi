@@ -43,6 +43,14 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "Azure.Identity": {
+              "target": "Package",
+              "version": "[1.4.1, )"
+            },
+            "Azure.Security.KeyVault.Keys": {
+              "target": "Package",
+              "version": "[4.2.0, )"
+            },
             "EasyRetry": {
               "target": "Package",
               "version": "[2.0.1, )"

@@ -68,5 +68,12 @@ C:\Users\JOEY'S\Source\Repos\PaymentTestApi\PaymentTestApi\obj\Debug\netcoreapp3
 C:\Users\JOEY'S\Source\Repos\PaymentTestApi\PaymentTestApi\obj\Debug\netcoreapp3.1\PaymentTestApi.dll
 C:\Users\JOEY'S\Source\Repos\PaymentTestApi\PaymentTestApi\obj\Debug\netcoreapp3.1\PaymentTestApi.pdb
 C:\Users\JOEY'S\Source\Repos\PaymentTestApi\PaymentTestApi\bin\Debug\netcoreapp3.1\EasyRetry.dll
+C:\Users\JOEY'S\Source\Repos\PaymentTestApi\PaymentTestApi\bin\Debug\netcoreapp3.1\Azure.Core.dll
+C:\Users\JOEY'S\Source\Repos\PaymentTestApi\PaymentTestApi\bin\Debug\netcoreapp3.1\Azure.Security.KeyVault.Keys.dll
+C:\Users\JOEY'S\Source\Repos\PaymentTestApi\PaymentTestApi\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\JOEY'S\Source\Repos\PaymentTestApi\PaymentTestApi\bin\Debug\netcoreapp3.1\System.Memory.Data.dll
+C:\Users\JOEY'S\Source\Repos\PaymentTestApi\PaymentTestApi\bin\Debug\netcoreapp3.1\System.Text.Encodings.Web.dll
+C:\Users\JOEY'S\Source\Repos\PaymentTestApi\PaymentTestApi\bin\Debug\netcoreapp3.1\Azure.Identity.dll
+C:\Users\JOEY'S\Source\Repos\PaymentTestApi\PaymentTestApi\bin\Debug\netcoreapp3.1\Microsoft.Identity.Client.Extensions.Msal.dll
 C:\Users\JOEY'S\Source\Repos\PaymentTestApi\PaymentTestApi\obj\Debug\netcoreapp3.1\PaymentTestApi.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\JOEY'S\Source\Repos\PaymentTestApi\PaymentTestApi\obj\Debug\netcoreapp3.1\PaymentTestApi.MvcApplicationPartsAssemblyInfo.cache

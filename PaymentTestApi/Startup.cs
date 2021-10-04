@@ -16,6 +16,7 @@ using Microsoft.OpenApi.Models;
 using PaymentTestApi.ApplicationService;
 using PaymentTestApi.ApplicationService.CheapPaymentGatewayService;
 using PaymentTestApi.ApplicationService.ExpensivePaymentGatewayService;
+using PaymentTestApi.ApplicationService.KeyVaultTest;
 using PaymentTestApi.ApplicationService.PremiumPaymentService;
 using PaymentTestApi.ApplicationService.ProcessPayment;
 using PaymentTestApi.ApplicationService.ProcessPaymentProvider;
@@ -47,6 +48,7 @@ namespace MediSmartTestApi
             services.AddScoped<IPremiumPaymentGateway, PremiumPaymentGateway>();
             services.AddScoped<IValidatePaymentRequest, ValidatePaymentRequest>();
             services.AddScoped<IProcessPaymentService, ProcessPaymentService>();
+            services.AddScoped<IKeyVaultTestService, KeyVaultTestService>();
 
             services.AddSwaggerGen(c =>
             {
