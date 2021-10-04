@@ -25,7 +25,7 @@ namespace PaymentTestApi.Controllers
 
                 //if (!result) return BadRequest();
 
-                return Ok();
+                return Ok(result);
             }
             catch (Exception ex)
             {
