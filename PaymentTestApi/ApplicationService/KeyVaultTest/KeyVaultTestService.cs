@@ -30,8 +30,14 @@ namespace PaymentTestApi.ApplicationService.KeyVaultTest
             string keyVaultKeyName = "TestVaultKey";
             string textToEncrypt = "StuffIDoNotWantYouToKnow";
 
+            var defaultAzurecredentialsOption = new DefaultAzureCredentialOptions()
+            {
+                ExcludeManagedIdentityCredential = true,
+                ExcludeVisualStudioCredential = true,
+                ExcludeAzurePowerShellCredential = true,
+            };
 
-            var client = new KeyClient(new Uri(keyVaultUri), new DefaultAzureCredential());
+            var client = new KeyClient(new Uri(keyVaultUri), new DefaultAzureCredential(defaultAzurecredentialsOption));
 
             await client.CreateRsaKeyAsync(new CreateRsaKeyOptions(keyVaultKeyName)).ConfigureAwait(false);
 
