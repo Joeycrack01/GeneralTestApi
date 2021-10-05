@@ -14,6 +14,7 @@ namespace PaymentTestApi.ApplicationService.KeyVaultTest
         Task<string> DecryptStringAsync(CryptographyClient cryptoClient, string input);
         Task<string> EncryptDecryptAsync();
         Task<string> EncryptStringAsync(CryptographyClient cryptoClient, string input);
+        Task<(string, string)> DecryptAsync();
     }
 
     public class KeyVaultTestService : IKeyVaultTestService
@@ -54,6 +55,39 @@ namespace PaymentTestApi.ApplicationService.KeyVaultTest
 
             //Console.WriteLine($"Decrypted string: {decryptedString}");
             //return $"Decrypted string: {decryptedString}";
+        }
+        
+        public async Task<(string, string)> DecryptAsync()
+        {
+            //string keyVaultName = "myfavouritekeyvault";
+            string keyVaultUri = "https://joeycrackvault.vault.azure.net";
+            string keyVaultKeyName = "TestVaultKey";
+            string textToEncrypt = "StuffIDoNotWantYouToKnow";
+
+            var defaultAzurecredentialsOption = new DefaultAzureCredentialOptions()
+            {
+                ExcludeManagedIdentityCredential = true,
+                ExcludeVisualStudioCredential = true,
+                ExcludeAzurePowerShellCredential = true,
+            };
+
+            var client = new KeyClient(new Uri(keyVaultUri), new DefaultAzureCredential(defaultAzurecredentialsOption));
+
+            await client.CreateRsaKeyAsync(new CreateRsaKeyOptions(keyVaultKeyName)).ConfigureAwait(false);
+
+            KeyVaultKey key = await client.GetKeyAsync(keyVaultKeyName).ConfigureAwait(false);
+
+            var cryptoClient = new CryptographyClient(key.Id, new DefaultAzureCredential());
+
+            string encryptedString = await EncryptStringAsync(cryptoClient, textToEncrypt).ConfigureAwait(false);
+
+            Console.WriteLine($"Encrypted string: {encryptedString}");
+            //return $"Encrypted string: {encryptedString}";
+
+            string decryptedString = await DecryptStringAsync(cryptoClient, encryptedString).ConfigureAwait(false);
+
+            Console.WriteLine($"Decrypted string: {decryptedString}");
+            return ($"Encrypted string: {encryptedString}", $"Decrypted string: {decryptedString}");
         }
 
         //public string GatewayName = "Premium Payment Gateway";

@@ -33,5 +33,24 @@ namespace PaymentTestApi.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+
+        [HttpPost, Route("KeyVaultDecryptionTest")]
+        public async Task<IActionResult> KeyVaultDecryptionTest()
+        {
+            try
+            {
+                var result = await _keyVaultTestService.DecryptAsync();
+
+                //if (!result) return BadRequest();
+
+                return Ok(result.Item1 + " ====> " + result.Item2);
+            }
+            catch (Exception ex)
+            {
+                LogError(ex);
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }
