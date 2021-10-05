@@ -62,7 +62,7 @@ namespace PaymentTestApi.ApplicationService.KeyVaultTest
             //string keyVaultName = "myfavouritekeyvault";
             string keyVaultUri = "https://joeycrackvault.vault.azure.net";
             string keyVaultKeyName = "TestVaultKey";
-            string textToEncrypt = "StuffIDoNotWantYouToKnow";
+            string textToEncrypt = "cnbTestString";
 
             var defaultAzurecredentialsOption = new DefaultAzureCredentialOptions()
             {
